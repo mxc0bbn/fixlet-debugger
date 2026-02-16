@@ -1,0 +1,6 @@
+#!/bin/bash
+rm -f /usr/local/bin/fixlet-debugger
+rm -f /usr/share/polkit-1/actions/com.bigfix.pkexec.fixlet-debugger.policy
+rm -f /opt/fixlet-debugger/launch-fixlet-debugger.sh
+rm -rf /opt/fixlet-debugger/__pycache__
+echo "Fixlet Debugger removed."

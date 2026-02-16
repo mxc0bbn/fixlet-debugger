@@ -1,0 +1,19 @@
+Package: fixlet-debugger
+Version: 1.2.1
+Section: utils
+Priority: optional
+Architecture: all
+Depends: python3 (>= 3.8), python3-pyqt5, policykit-1
+Recommends: besclient
+Maintainer: BigFix Community
+Description: Fixlet Debugger for Linux
+ A GUI tool for testing and debugging BigFix relevance expressions.
+ Provides similar functionality to the Windows Fixlet Debugger.
+ .
+ Features:
+  - Syntax highlighting for relevance language
+  - Bracket and keyword matching
+  - QnA and Single Clause evaluation modes
+  - Type information display (-showtypes)
+  - Graphical privilege escalation (pkexec)
+  - Save/load query files

@@ -1,0 +1,25 @@
+Fixlet Debugger for Linux v1.2.1
+=================================
+
+REQUIREMENTS
+  - Ubuntu 20.04+ or other Debian-based Linux
+  - HCL BigFix Client installed (with qna at /opt/BESClient/bin/qna)
+  All other dependencies are installed automatically.
+
+INSTALL
+  sudo apt install ./fixlet-debugger_1.2.1_all.deb
+
+RUN
+  From the applications menu: search for "Fixlet Debugger"
+  From terminal:              fixlet-debugger
+  A graphical password prompt will appear for authentication.
+
+UNINSTALL
+  sudo apt remove fixlet-debugger
+
+LICENSE
+  GNU General Public License v3 - see LICENSE file or
+  https://www.gnu.org/licenses/gpl-3.0.html
+
+AUTHOR
+  Created by Mike Consuegra for use with HCL BigFix

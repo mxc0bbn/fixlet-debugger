@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+*.deb
+*.zip
+.vscode/
+*.swp
+*.swo
+*~
+CLAUDE.md

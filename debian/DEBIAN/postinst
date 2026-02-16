@@ -1,0 +1,34 @@
+#!/bin/bash
+chmod +x /opt/fixlet-debugger/fixlet_debugger.py
+chmod +x /opt/fixlet-debugger/fixlet-debugger
+
+# Clean up leftovers from previous versions
+rm -f /opt/fixlet-debugger/launch-fixlet-debugger.sh
+rm -rf /opt/fixlet-debugger/__pycache__
+
+# Create wrapper script that invokes pkexec for graphical privilege escalation
+cat > /usr/local/bin/fixlet-debugger << 'WRAPPER'
+#!/bin/bash
+# Fixlet Debugger — pkexec wrapper
+# Provides graphical password prompt instead of requiring terminal sudo
+
+if [ "$EUID" -eq 0 ]; then
+    # Already root (e.g. running from root terminal) — launch directly
+    exec /opt/fixlet-debugger/fixlet-debugger "$@"
+fi
+
+# Grant root access to the X display, then escalate via pkexec
+xhost +local:root > /dev/null 2>&1
+pkexec /opt/fixlet-debugger/fixlet-debugger "$@"
+EXIT_CODE=$?
+xhost -local:root > /dev/null 2>&1
+exit $EXIT_CODE
+WRAPPER
+chmod +x /usr/local/bin/fixlet-debugger
+
+echo "Fixlet Debugger installed successfully!"
+echo ""
+echo "To run: fixlet-debugger (from terminal or application menu)"
+echo "Or find 'Fixlet Debugger' in your applications menu"
+echo ""
+echo "A graphical password dialog will appear for authentication."

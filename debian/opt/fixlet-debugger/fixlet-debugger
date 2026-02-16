@@ -1,0 +1,17 @@
+#!/bin/bash
+#
+# Fixlet Debugger Launcher
+# Invoked by pkexec — runs as root with DISPLAY/XAUTHORITY preserved
+#
+
+# When launched via pkexec, PKEXEC_UID is set to the calling user's UID
+if [ -n "$PKEXEC_UID" ]; then
+    export XDG_RUNTIME_DIR="/run/user/${PKEXEC_UID}"
+    [ -z "$DISPLAY" ] && export DISPLAY=":0"
+    if [ -z "$XAUTHORITY" ]; then
+        USER_HOME=$(getent passwd "$PKEXEC_UID" | cut -d: -f6)
+        [ -f "${USER_HOME}/.Xauthority" ] && export XAUTHORITY="${USER_HOME}/.Xauthority"
+    fi
+fi
+
+exec /usr/bin/python3 /opt/fixlet-debugger/fixlet_debugger.py "$@"

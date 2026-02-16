@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=Fixlet Debugger
+Comment=BigFix Relevance Expression Debugger
+Exec=fixlet-debugger
+Icon=fixlet-debugger
+Terminal=false
+Categories=Development;Utility;
+Keywords=bigfix;relevance;debugger;qna;hcl;
+StartupNotify=true
